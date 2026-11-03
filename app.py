@@ -1,6 +1,7 @@
 from html import escape
 from datetime import datetime, timezone
 from pathlib import Path
+from urllib.parse import urlsplit
 import streamlit as st
 from data_source import SOURCE, load_records, filter_records, website_url, email_url
 
@@ -25,7 +26,6 @@ def details(row):
         ('Meet your community', ' · '.join(filter(None, [row['day'], row['time'], row['frequency'], row['format']])) or 'Meeting schedule not provided.'),
         ('Meeting location', ' · '.join(filter(None, [row['venue'], row['address']]))),
         ('Community contacts', ' · '.join(filter(None, [row['contact'], row['position']])) or 'Community representative not listed.'),
-        ('Public email', row['email']),
         ('Neighborhood liaison', row['liaison'] or 'No liaison listed.'),
         ('Council recognized', row['recognized'] or 'Recognition date not provided.'),
     ]
@@ -33,12 +33,17 @@ def details(row):
         if body:
             st.markdown(f'<div class="detail-section"><strong>{escape(title)}</strong><p>{escape(body)}</p></div>', unsafe_allow_html=True)
     email, website = email_url(row['email']), website_url(row['website'])
-    columns = st.columns(2)
+    action_count = int(bool(email)) + int(bool(website))
+    columns = st.columns(action_count) if action_count else []
+    action_index = 0
     if email:
-        columns[0].link_button('Email neighborhood ↗', email, use_container_width=True)
+        columns[action_index].link_button('Email neighborhood ↗', email, use_container_width=True)
+        action_index += 1
     if website:
-        label = 'Visit Facebook ↗' if 'facebook.com' in website.lower() or 'fb.com' in website.lower() else 'Visit website ↗'
-        columns[1].link_button(label, website, use_container_width=True)
+        host = (urlsplit(website).hostname or '').lower().rstrip('.')
+        is_facebook = any(host == domain or host.endswith('.' + domain) for domain in ('facebook.com', 'fb.com'))
+        label = 'Visit Facebook ↗' if is_facebook else 'Visit website ↗'
+        columns[action_index].link_button(label, website, use_container_width=True)
     st.caption('Please confirm meeting details with the neighborhood before attending. Missing information is not available in the source directory.')
 
 with st.spinner('Loading neighborhood directory…'):
