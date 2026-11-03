@@ -1,0 +1,12 @@
+:root{--navy:#123e56;--teal:#087f79;--muted:#617682}
+.stApp{background:#f5f8f8;color:var(--navy)}
+.block-container{max-width:1200px;padding-top:2rem}
+.brand{display:flex;align-items:center;gap:16px;padding:4px 0 22px}.brand strong{font-size:24px;letter-spacing:-.7px}.brand small{display:block;letter-spacing:3px;font-size:10px;color:var(--muted)}
+.home-tile{background:var(--navy);color:white;border-radius:14px;font-size:34px;width:58px;height:58px;display:grid;place-items:center}.pilot{margin-left:20px;font-size:12px;font-weight:700;background:#e9f3f2;color:var(--teal);padding:8px 12px;border-radius:6px}
+.hero,.detail-hero{background:var(--navy);color:white;padding:42px 36px;border-radius:0;margin:10px 0 26px}.eyebrow{color:#a8d7d1;font-size:11px;letter-spacing:2px;font-weight:700}.hero h1{color:white;font-size:clamp(30px,5vw,52px);line-height:1.08;letter-spacing:-1.7px;padding:22px 0 12px}.hero h1 span{color:#a8d7d1}.hero p{max-width:620px;line-height:1.7;font-size:16px}.stats{display:flex;flex-wrap:wrap;gap:26px;margin-top:30px;font-size:12px}.stats b{font-size:27px;margin-right:5px}
+.find-heading{display:flex;justify-content:space-between;align-items:center;gap:12px}.find-heading h2{font-size:25px;letter-spacing:-.7px}.find-heading p{color:var(--muted);font-size:12px}
+[data-testid="stVerticalBlockBorderWrapper"]>div{border-radius:12px!important;background:white}
+.card-meta{display:flex;align-items:center;justify-content:space-between;gap:8px;font-size:9px;letter-spacing:1.2px}.badge{border-radius:20px;padding:4px 9px;font-size:10px;letter-spacing:0}.active{background:#eaf5ee;color:#367350}.inactive{background:#f0f2f3;color:#68747e}h3{font-size:20px!important;color:var(--navy);min-height:54px;padding-top:18px!important}.districts{color:var(--muted);font-size:12px;margin-top:24px}
+div.stButton>button,div.stLinkButton>a{border-radius:6px;border:1px solid #cddbdd;color:var(--teal);background:white}div.stButton>button:hover,div.stLinkButton>a:hover{border-color:var(--teal);background:#eaf3f2;color:var(--teal)}
+.detail-hero{padding:26px;border-radius:12px}.detail-hero h2{color:white;font-size:30px}.detail-section{padding:16px 0;border-bottom:1px solid #dce6e8}.detail-section p{color:var(--muted);margin-top:10px;white-space:pre-wrap}
+@media(max-width:640px){.block-container{padding:1rem}.brand strong{font-size:19px}.brand small{letter-spacing:1px;font-size:8px}.brand{gap:10px}.pilot{display:none}.hero{padding:28px 20px}.find-heading{display:block}.stats{gap:15px}.stats b{font-size:23px}}
