@@ -23,7 +23,7 @@ streamlit run app.py
 
 ## Data and workflow
 
-- Live source: https://houstontxsandbox.ogopendata.com/dataset/superneighborhooddirectory
+- Live source
 - CKAN DataStore resource: `6ee89d61-bd53-48a1-b611-3208d1844e16`.
 - Live responses are cached for 15 minutes.
 - If the source is unavailable, the app shows a warning and uses the bundled November 2, 2026 snapshot (88 records). This is a fixed fallback, not a continuously updated backup.
